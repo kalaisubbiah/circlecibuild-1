@@ -6,3 +6,15 @@ jobs:
     steps:
       - checkout
       - run: echo "First build"
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "First Test"
+  workflows:
+    version: 2
+    build_and_test:
+      jobs:
+        - build
+        - test
